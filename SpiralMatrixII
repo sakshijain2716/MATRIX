@@ -1,0 +1,54 @@
+// GENERATE AN N*N MATRIX FILLED WITH ELEMENTS FROM 1 TO N^2 IN SPIRAL ORDER.
+
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+            int r_st = 0;
+            int r_end = n-1;
+            int c_st = 0;
+            int c_end = n-1;
+            int x=1;
+            vector<vector<int>> ans(n,vector<int>(n));
+            
+            while(r_st<=r_end && c_st<=c_end)
+            {
+                    for(int i=c_st ; i<=c_end ; i++)
+                    {
+                            ans[r_st][i] = x;
+                             x++;
+                    }
+                   
+                    r_st++;
+                    
+                    for(int i=r_st ; i<=r_end ; i++)
+                    {
+                            ans[i][c_end] = x;
+                             x++;
+                    }
+                   
+                    c_end--;
+                    if(r_st<=r_end)
+                    {
+                    for(int i = c_end ; i>=c_st ; i--)
+                    {
+                            ans[r_end][i] = x;
+                             x++;
+                    }
+                  
+                    r_end--;
+                    }
+                    if(c_st<=c_end)
+                    {
+                    for(int i=r_end ; i>=r_st ; i--)
+                    {
+                            ans[i][c_st] = x;
+                             x++;
+                    }
+                 
+                    c_st++;
+                    }
+            }
+            
+        return ans;
+    }
+};
