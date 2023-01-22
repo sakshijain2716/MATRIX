@@ -1,0 +1,45 @@
+//RETURN ALL THE ELEMENTS IN SPIRAL ORDER
+class Solution {
+public:
+    vector<int> spiralOrder(vector<vector<int>>& m) {
+        
+            int row_st = 0;
+            int row_end = m.size()-1;
+            int col_st = 0;
+            int col_end = m[0].size()-1;
+            vector<int> ans;
+            
+            while(row_st <= row_end && col_st <= col_end)
+            {
+                   
+                    for(int i=col_st ; i<=col_end ; i++)
+                    {
+                            ans.push_back(m[row_st][i]);
+                    }
+                    row_st++;
+                    for(int i = row_st ; i<=row_end ; i++)
+                    {
+                            ans.push_back(m[i][col_end]);
+                    }
+                    col_end--;
+                    
+                    if(row_st <= row_end)
+                    {
+                            for(int i=col_end ; i>=col_st ; i--)
+                    {
+                            ans.push_back(m[row_end][i]);
+                    }
+                    row_end--;
+                    }
+                    if(col_st<=col_end)
+                    {  
+                     for(int i = row_end ; i>=row_st ; i--)
+                    {
+                            ans.push_back(m[i][col_st]);
+                    }
+                    col_st++;
+                    }
+            }
+            return ans;
+    }
+};
